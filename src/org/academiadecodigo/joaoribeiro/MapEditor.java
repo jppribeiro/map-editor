@@ -30,6 +30,8 @@ public class MapEditor {
 
         user.init();
 
+        gridController.setFileManager(fileManager);
+
     }
 
 

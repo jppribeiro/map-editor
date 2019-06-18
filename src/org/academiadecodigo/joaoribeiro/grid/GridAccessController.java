@@ -5,6 +5,8 @@ import org.academiadecodigo.joaoribeiro.user.Direction;
 import org.academiadecodigo.joaoribeiro.user.User;
 import org.academiadecodigo.joaoribeiro.user.UserPosition;
 
+import java.io.IOException;
+
 public class GridAccessController {
 
     private Grid grid;
@@ -50,11 +52,43 @@ public class GridAccessController {
     }
 
 
+    // Methods related to Save and Load >>>>>>>>>>>>>>>>>>
+
+    public void save(String filePath) {
+        try {
+            fileManager.saveStatus(filePath);
+        } catch (IOException ioEx) {
+            System.out.println("An I/O exception occurred");
+        }
+
+    }
+
+    public void load(String filePath) {
+
+    }
+
+
+
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
     public int getCellSize() {
         return grid.getCellSize();
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setFileManager(FileManager fileManager) {
+        this.fileManager = fileManager;
+    }
+
+    public Grid getGrid() {
+        return grid;
     }
 }
