@@ -1,9 +1,9 @@
-package org.academiadecodigo.joaoribeiro.logicUnit;
+package org.academiadecodigo.joaoribeiro.grid;
 
 public class GridPosition extends Position {
 
-    public GridPosition(int col, int row) {
-        super(col, row);
+    public GridPosition(int col, int row, int cellSize) {
+        super(col, row, cellSize);
     }
 
     public void setCanvas() {

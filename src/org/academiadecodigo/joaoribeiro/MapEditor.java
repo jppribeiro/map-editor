@@ -1,22 +1,30 @@
 package org.academiadecodigo.joaoribeiro;
 
-import org.academiadecodigo.joaoribeiro.logicUnit.Grid;
-import org.academiadecodigo.joaoribeiro.visualUnit.GridGFX;
+import org.academiadecodigo.joaoribeiro.grid.Grid;
+import org.academiadecodigo.joaoribeiro.user.User;
 
 public class MapEditor {
 
     private Grid grid;
-    private GridGFX gridGFX;
     private User user;
+    private int cellSize;
 
     public MapEditor(int col, int row, int cellSize) {
+        this.cellSize = cellSize;
         grid = new Grid(col, row, cellSize);
-        gridGFX = new GridGFX(col, row, cellSize);
-        user = new User(gridGFX);
+        user = new User(cellSize, grid.getLayout());
     }
 
     public void init() {
-        grid.setUser(user);
+
+        grid.init(cellSize);
+
+        user.draw();
+
+        grid.drawLayout();
+
+        user.init();
+
     }
 
 
