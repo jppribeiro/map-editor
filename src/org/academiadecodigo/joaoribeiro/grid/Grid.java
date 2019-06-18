@@ -4,15 +4,17 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Grid {
 
-    private Position[][] layout;
+    private GridPosition[][] layout;
+    private int cellSize;
     private final int PADDING;
 
 
     public Grid(int colNum, int rowNum, int cellSize) {
         PADDING = 10;
-        layout = new Position[colNum][rowNum];
+        this.cellSize = cellSize;
+        layout = new GridPosition[colNum][rowNum];
         buildGrid(colNum, rowNum, cellSize);
-        init(cellSize);
+        init();
     }
 
     // METHODS TO CONSTRUCT THE GRID >>>>>>>>>>>>
@@ -28,7 +30,7 @@ public class Grid {
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
-    public void init(int cellSize) {
+    public void init() {
         Rectangle window = new Rectangle(PADDING, PADDING, cellSize, cellSize);
         window.draw();
     }
@@ -44,7 +46,11 @@ public class Grid {
     }
 
 
-    public Position[][] getLayout() {
+    public GridPosition[][] getLayout() {
         return layout;
+    }
+
+    public int getCellSize() {
+        return cellSize;
     }
 }
