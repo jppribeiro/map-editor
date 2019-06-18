@@ -7,8 +7,8 @@ To move the cursor press the arrow keys.
 
 To paint or remove a pixel press <space>.
 
-To save a grid press <s>.
+To save a grid press 's'
 
-To load a saved grid press <l>.
+To load a saved grid press 'l'
 
 grid states are save in a .txt file.
