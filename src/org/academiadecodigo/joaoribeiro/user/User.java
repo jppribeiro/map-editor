@@ -30,6 +30,7 @@ public class User implements KeyboardHandler {
         initKeyboardEventPress(keyboard, KeyboardEvent.KEY_LEFT);
         initKeyboardEventPress(keyboard, KeyboardEvent.KEY_SPACE);
         initKeyboardEventPress(keyboard, KeyboardEvent.KEY_S);
+        initKeyboardEventPress(keyboard, KeyboardEvent.KEY_L);
 
         initKeyboardEventRelease(keyboard, KeyboardEvent.KEY_SPACE);
 
@@ -80,8 +81,13 @@ public class User implements KeyboardHandler {
                 pos.getCellGfx().setColor(Color.BLUE);
                 gridController.changeCellStatus(pos);
                 gridController.checkCellVisibility(pos, previousPos);
+                break;
             case KeyboardEvent.KEY_S:
                 gridController.save("saveStatus.txt");
+                break;
+            case KeyboardEvent.KEY_L:
+                gridController.load("saveStatus.txt");
+                break;
             default:
                 break;
         }

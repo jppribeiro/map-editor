@@ -64,8 +64,36 @@ public class GridAccessController {
     }
 
     public void load(String filePath) {
+        try {
+            fileManager.loadStatus(filePath);
+        } catch (IOException ioEx) {
+            System.out.println("An IO Exception occurred.");
+        }
+    }
+
+
+    public void resetCellStatus(int[][] loadedCells) {
+
+        for(int i = 0; i < gridWidth(); i++) {
+            for (int j = 0; j < gridHeight(); j++) {
+                if(grid.getLayout()[i][j].isActive()) {
+                    grid.getLayout()[i][j].toggleActive();
+                    grid.getLayout()[i][j].empty();
+                    grid.getLayout()[i][j].draw();}
+            }
+        }
+
+        for (int[] pos:
+             loadedCells) {
+            GridPosition activeCell = grid.getLayout()[pos[0]][pos[1]];
+            if (!activeCell.isActive()) {
+                activeCell.toggleActive();
+                activeCell.fill();
+            }
+        }
 
     }
+
 
 
 
@@ -91,4 +119,25 @@ public class GridAccessController {
     public Grid getGrid() {
         return grid;
     }
+
+    public int gridWidth() {
+        return grid.getLayout().length;
+    }
+
+    public int gridHeight() {
+        return grid.getLayout()[0].length;
+    }
+
+    public int userColumn() {
+        return user.getPos().getCol();
+    }
+
+    public int userRow() {
+        return user.getPos().getRow();
+    }
+
+    public boolean checkIfCellIsActive(int col, int row) {
+        return grid.getLayout()[col][row].isActive();
+    }
+
 }
